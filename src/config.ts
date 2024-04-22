@@ -9,6 +9,9 @@ const config = {
     width: 30,
     height: 30,
   },
+  straw: {
+    number: 20
+  },
   images: {
     straw,
   },
