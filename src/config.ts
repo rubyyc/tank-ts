@@ -10,7 +10,7 @@ const config = {
     height: 30,
   },
   straw: {
-    number: 20
+    number: 50
   },
   images: {
     straw,

@@ -1,5 +1,4 @@
 import config from '../config'
-import { image } from '../service/image'
 
 export default abstract class CanvasAbstract {
   protected items = []
@@ -23,7 +22,7 @@ export default abstract class CanvasAbstract {
     this.app.insertAdjacentElement('afterbegin', this.el)
   }
 
-  protected drawModels(num: number,model: any) {
+  protected drawModels(num: number,model: modelConstructor) {
     // 重构前
     /*
     const img = document.createElement('img')
@@ -37,7 +36,8 @@ export default abstract class CanvasAbstract {
     // 重构后
     this.positionCollection(num).forEach(() => {
       const position = this.position()
-      new model(this.canvas,position.x,position.y)
+      const instance = new model(this.canvas,position.x,position.y)
+      instance.render()
     })
   }
 
