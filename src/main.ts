@@ -1,8 +1,11 @@
 import './style.scss'
 import config from './config'
-import straw from './canvas/straw'
 import './service/image'
-import { image, promises } from './service/image'
+import { promises } from './service/image'
+import wall from './canvas/wall'
+import water from './canvas/water'
+import straw from './canvas/straw'
+import steel from './canvas/steel'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
@@ -15,10 +18,15 @@ async function bootstrap()
   // 先加载贴图资源
   await Promise.all(promises)
   //console.log(image.get('straw'));
-  console.log('here1')
-  console.log(image.get('straw'))
+  // console.log('here1')
+  // console.log(image.get('straw'))
   // 再渲染画布
   straw.render()
+  // tank.render()
+  wall.render()
+  water.render()
+  steel.render()
+
 }
 
 void bootstrap()

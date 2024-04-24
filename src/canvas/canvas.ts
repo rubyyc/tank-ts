@@ -1,8 +1,11 @@
 import config from '../config'
+import position from '../service/position'
 
 export default abstract class CanvasAbstract {
-  protected items = []
+  protected models:IModel[] = []
   abstract render(): void
+  abstract num(): number
+  abstract model(): modelConstructor
 
   constructor(
     protected app = document.querySelector('#app') as HTMLDivElement,
@@ -12,6 +15,7 @@ export default abstract class CanvasAbstract {
     this.createCanvas()
   }
 
+  // 创建画布
   protected createCanvas() {
     this.el.width = config.canvas.width
     this.el.height = config.canvas.height
@@ -22,7 +26,8 @@ export default abstract class CanvasAbstract {
     this.app.insertAdjacentElement('afterbegin', this.el)
   }
 
-  protected drawModels(num: number,model: modelConstructor) {
+  // 创建models实例
+  protected createModels(){
     // 重构前
     /*
     const img = document.createElement('img')
@@ -33,42 +38,20 @@ export default abstract class CanvasAbstract {
     }
     */
 
-    // 重构后
-    this.positionCollection(num).forEach(() => {
-      const position = this.position()
-      const instance = new model(this.canvas,position.x,position.y)
-      instance.render()
+  // 重构后
+    const model = this.model()
+    console.log(this.num());
+    position.getCollection(this.num()).forEach((p) => {
+      const instance = new model(this.canvas, p.x, p.y)
+      this.models.push(instance)
     })
   }
 
-  protected positionCollection(num: number) {
-    const collection = [] as { x: number; y: number }[]
-
-    for (let index = 0; index < num; index++) {
-      while (true) {
-        const position = this.position()
-
-        const exists = collection.some(
-          (c) => c.x == position.x && c.y == position.y
-        )
-        if (!exists) {
-          collection.push(position)
-          break
-        }
-      }
-    }
-    return collection
-  }
-
-  protected position() {
-    return {
-      x:
-        Math.floor(Math.random() * (config.canvas.width / config.model.width)) *
-        config.model.width,
-      y:
-        (Math.floor(
-          Math.random() * (config.canvas.height / config.model.height-5)
-        )  + 2)* config.model.height,
-    }
+  // 将models渲染到画布上
+  protected renderModels()
+  {
+    this.models.forEach(model => {
+      model.render()
+    })
   }
 }

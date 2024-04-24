@@ -10,8 +10,8 @@ export default abstract class modelAbstract {
   ) {
   }
 
-  protected draw()
+  protected draw(img:HTMLImageElement)
   {
-    this.canvas.drawImage(image.get('straw')!,this.x,this.y,config.model.width,config.model.height)
+    this.canvas.drawImage(img,this.x,this.y,config.model.width,config.model.height)
   }
 }

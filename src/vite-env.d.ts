@@ -5,6 +5,12 @@ interface modelConstructor{
 }
 
 interface IModel{
-  render():void
+  render(): void,
+}
+
+interface ICanvas{
+  model(): modelConstructor,
+  num(): number
+
 }
 
