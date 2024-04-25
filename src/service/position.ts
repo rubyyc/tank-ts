@@ -26,7 +26,7 @@ class Position {
     return collection
   }
 
-  protected position() {
+  public position() {
     return {
       x:
         Math.floor(Math.random() * (config.canvas.width / config.model.width)) *

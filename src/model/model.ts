@@ -1,7 +1,7 @@
 import config from "../config";
-import { image } from "../service/image";
 
 export default abstract class modelAbstract {
+  abstract name: string
   abstract render():void
   constructor(
     protected canvas: CanvasRenderingContext2D,

@@ -2,7 +2,10 @@ import straw from './static/images/straw/straw.png'
 import wall from './static/images/wall/wall.gif'
 import steel from './static/images/wall/steels.gif'
 import water from './static/images/water/water.gif'
-import tank from './static/images/tank/left.gif'
+import tankTop from './static/images/tank/top.gif'
+import tankRight from './static/images/tank/right.gif'
+import tankBottom from './static/images/tank/bottom.gif'
+import tankLeft from './static/images/tank/left.gif'
 
 const config = {
   canvas: {
@@ -20,7 +23,7 @@ const config = {
     number: 60,
   },
   steel: {
-    number: 20
+    number: 20,
   },
   water: {
     number: 50,
@@ -33,7 +36,10 @@ const config = {
     wall,
     steel,
     water,
-    tank,
+    tankTop,
+    tankRight,
+    tankBottom,
+    tankLeft,
   },
 }
 

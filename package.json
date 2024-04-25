@@ -12,5 +12,9 @@
     "sass": "^1.75.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.17.0",
+    "lodash": "^4.17.21"
   }
 }

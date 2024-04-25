@@ -6,6 +6,7 @@ import wall from './canvas/wall'
 import water from './canvas/water'
 import straw from './canvas/straw'
 import steel from './canvas/steel'
+import tank from './canvas/tank'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
@@ -22,10 +23,10 @@ async function bootstrap()
   // console.log(image.get('straw'))
   // 再渲染画布
   straw.render()
-  // tank.render()
   wall.render()
   water.render()
   steel.render()
+  tank.render()
 
 }
 
