@@ -10,6 +10,30 @@ export default class TankModel extends modelAbstract implements IModel{
   render(): void {
     this.randomDirection()
     super.draw(this.randImage())
+
+    setInterval(() => {
+      this.move()
+    }, 50);
+
+  }
+
+  protected move(): void {
+    this.canvas.clearRect(this.x,this.y,config.model.width,config.model.height)
+    switch (this.direction) {
+      case directionEnum.top:
+        this.y -= 2
+        break
+      case directionEnum.right:
+        this.x += 2
+        break
+      case directionEnum.bottom:
+        this.y += 2
+        break
+      case directionEnum.left:
+        this.x -= 2
+        break
+    }
+    super.draw(this.randImage())
   }
 
   randomDirection() {
