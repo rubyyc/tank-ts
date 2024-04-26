@@ -23,7 +23,7 @@ class Tank extends CanvasAbstract implements ICanvas{
     for (let index = 0;index < this.num(); index++) {
       const model = this.model()
       const p = position.position()
-      const instance = new model(this.canvas, p.x, 0)
+      const instance = new model(p.x, 0)
       this.models.push(instance)
     }
 
@@ -31,7 +31,7 @@ class Tank extends CanvasAbstract implements ICanvas{
 
   protected renderModels()
   {
-    this.canvas.clearRect(0,0,config.canvas.width,config.canvas.height)
+    this.ctx.clearRect(0,0,config.canvas.width,config.canvas.height)
     super.renderModels()
   }
 

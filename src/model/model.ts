@@ -2,14 +2,14 @@ import config from '../config'
 import { directionEnum } from '../enum/directionEnum'
 
 export default abstract class modelAbstract {
-  abstract name: string
+  protected abstract name: string
+  abstract canvas: ICanvas
   abstract render(): void
   abstract image(): HTMLImageElement
   protected direction: directionEnum = directionEnum.top
   public width = config.model.width
   public height = config.model.height
   constructor(
-    public canvas: CanvasRenderingContext2D,
     public x: number,
     public y: number
   ) {
@@ -24,6 +24,6 @@ export default abstract class modelAbstract {
 
   protected draw()
   {
-    this.canvas.drawImage(this.image(),this.x,this.y,config.model.width,config.model.height)
+    this.canvas.ctx.drawImage(this.image(),this.x,this.y,config.model.width,config.model.height)
   }
 }
