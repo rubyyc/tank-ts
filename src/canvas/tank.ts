@@ -13,7 +13,9 @@ class Tank extends CanvasAbstract implements ICanvas{
 
   render(): void {
     this.createModels()
-    super.renderModels()
+    this.renderModels()
+
+    setInterval(()=> this.renderModels(),config.timeout)
   }
 
   protected createModels(){
@@ -25,6 +27,12 @@ class Tank extends CanvasAbstract implements ICanvas{
       this.models.push(instance)
     }
 
+  }
+
+  protected renderModels()
+  {
+    this.canvas.clearRect(0,0,config.canvas.width,config.canvas.height)
+    super.renderModels()
   }
 
 }

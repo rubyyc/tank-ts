@@ -8,6 +8,8 @@ import tankBottom from './static/images/tank/bottom.gif'
 import tankLeft from './static/images/tank/left.gif'
 
 const config = {
+  timeout: 50,
+  dx: 1,
   canvas: {
     width: 900,
     height: 600,

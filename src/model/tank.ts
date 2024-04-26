@@ -6,43 +6,34 @@ import config from "../config";
 
 export default class TankModel extends modelAbstract implements IModel{
   name: string = 'tank'
-  protected direction: directionEnum = directionEnum.top
+
   render(): void {
-    this.randomDirection()
-    super.draw(this.randImage())
-
-    setInterval(() => {
-      this.move()
-    }, 50);
-
+    //super.draw()
+    this.move()
   }
 
   protected move(): void {
-    this.canvas.clearRect(this.x,this.y,config.model.width,config.model.height)
     switch (this.direction) {
       case directionEnum.top:
-        this.y -= 2
+        this.y -= config.dx
         break
       case directionEnum.right:
-        this.x += 2
+        this.x += config.dx
         break
       case directionEnum.bottom:
-        this.y += 2
+        this.y += config.dx
         break
       case directionEnum.left:
-        this.x -= 2
+        this.x -= config.dx
         break
     }
-    super.draw(this.randImage())
+    super.draw()
   }
 
-  randomDirection() {
-    this.direction = Object.keys(directionEnum)[Math.floor(Math.random()*4)] as directionEnum
-  }
 
-  randImage() {
+  image() {
     let direction = this.name + _.upperFirst(this.direction)
-    console.log(direction);
+    //console.log(direction);
     return image.get(direction as keyof typeof config.images)!
   }
 
