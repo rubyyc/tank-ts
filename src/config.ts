@@ -9,7 +9,7 @@ import tankLeft from './static/images/tank/left.gif'
 
 const config = {
   timeout: 50,
-  dx: 1,
+  dx: 4,
   canvas: {
     width: 900,
     height: 600,

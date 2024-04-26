@@ -1,9 +1,8 @@
 import config from '../config'
 import position from '../service/position'
-import { image } from '../service/image';
 
 export default abstract class CanvasAbstract {
-  protected models:IModel[] = []
+  public models:IModel[] = []
   abstract render(): void
   abstract num(): number
   abstract model(): modelConstructor
