@@ -31,7 +31,7 @@ const config = {
     number: 50,
   },
   tank: {
-    number: 20,
+    number: 40,
   },
   images: {
     straw,
