@@ -29,7 +29,7 @@ class Tank extends CanvasAbstract implements ICanvas{
 
   }
 
-  protected renderModels()
+  public renderModels()
   {
     this.ctx.clearRect(0,0,config.canvas.width,config.canvas.height)
     super.renderModels()

@@ -20,23 +20,34 @@ export default class BulletModel extends modelAbstract implements IModel {
     let y = this.y
     switch (this.direction) {
       case directionEnum.top:
-        y -= 2
+        y -= config.dx
         break
       case directionEnum.right:
-        x += 2
+        x += config.dx
         break
       case directionEnum.bottom:
-        y += 2
+        y += config.dx
         break
       case directionEnum.left:
-        x -= 2
+        x -= config.dx
         break
     }
     // 碰撞检测
-    if (util.isBulletTouchCanvas(x, y, 4, 4)) {
+    const touchModel = util.isBulletTouchModel(x, y, 2, 2)
+    if (util.isBulletTouchCanvas(x, y, 2, 2)) {
       // 移除模型或卸载模型
-      this.destroyModel()
-    } else {
+      this.destroy()
+    } else if (touchModel) {
+      // 子弹模型消失
+      this.destroy()
+      // 碰撞到的模型消失
+      // 不是白墙则卸载模型
+      if (touchModel.name != 'steel') {
+        touchModel.destroy()
+      }
+      // 爆炸
+      this.blast(touchModel)
+    } else{
       this.x = x
       this.y = y
       this.draw()

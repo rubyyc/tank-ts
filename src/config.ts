@@ -9,7 +9,7 @@ import tankLeft from './static/images/tank/left.gif'
 import bullet from './static/images/bullet/bullet.jpg'
 
 const config = {
-  timeout: 50,
+  timeout: 30,
   dx: 1,
   canvas: {
     width: 900,
@@ -32,7 +32,7 @@ const config = {
     number: 50,
   },
   tank: {
-    number: 40,
+    number: 50,
   },
   images: {
     straw,

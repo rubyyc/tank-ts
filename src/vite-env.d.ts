@@ -9,6 +9,7 @@ interface bulletModelConstructor {
 }
 
 interface IModel {
+  name: string
   render(): void
   tank?: IModel
   x: number
@@ -16,12 +17,14 @@ interface IModel {
   width: number,
   height: number
   image(): HTMLImageElement,
-  direction: string
+  direction: string,
+  destroy(): void
 }
 
 interface ICanvas {
   model(): modelConstructor | bulletModelConstructor
   num(): number
   ctx: CanvasRenderingContext2D,
-  removeModel(model:IModel):void
+  removeModel(model: IModel): void,
+  renderModels():void
 }

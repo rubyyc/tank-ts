@@ -2,7 +2,7 @@ import config from '../config'
 import { directionEnum } from '../enum/directionEnum'
 
 export default abstract class modelAbstract {
-  protected abstract name: string
+  abstract name: string
   abstract canvas: ICanvas
   abstract render(): void
   abstract image(): HTMLImageElement
@@ -27,7 +27,26 @@ export default abstract class modelAbstract {
     this.canvas.ctx.drawImage(this.image(),this.x,this.y,config.model.width,config.model.height)
   }
 
-  protected destroyModel() {
+  public destroy() {
+    // 删除模型
     this.canvas.removeModel(this)
+    // 画布重新渲染
+    this.canvas.renderModels()
+  }
+
+  // 模型爆炸
+  protected blast(model: IModel) {
+    Array(...Array(8).keys()).reduce((promise, index) => {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          const img = new Image()
+          img.src = `/src/static/images/blasts/blast${index}.gif`
+          img.onload = ()=>{
+            this.canvas.ctx.drawImage(img,model.x,model.y,model.width,model.height)
+            resolve(promise)
+          }
+        },50*index);
+      })
+    },Promise.resolve())
   }
 }

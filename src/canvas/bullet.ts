@@ -19,7 +19,7 @@ class Bullet extends CanvasAbstract implements ICanvas{
         this.createBullet()
         this.renderModels()
       }
-    ,50)
+    ,20)
   }
 
   createBullet() {
