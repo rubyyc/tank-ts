@@ -1,8 +1,8 @@
-import straw from "../canvas/straw";
-import { image } from "../service/image";
-import modelAbstract from "./model";
+import straw from '../canvas/straw'
+import { image } from '../service/image'
+import modelAbstract from './model'
 
-export default class StrawModel extends modelAbstract implements IModel{
+export default class StrawModel extends modelAbstract implements IModel {
   canvas: ICanvas = straw
   name: string = 'straw'
   image(): HTMLImageElement {
@@ -11,5 +11,4 @@ export default class StrawModel extends modelAbstract implements IModel{
   render(): void {
     super.draw()
   }
-
 }

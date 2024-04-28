@@ -1,8 +1,8 @@
-import wall from "../canvas/wall";
-import { image } from "../service/image";
-import modelAbstract from "./model";
+import wall from '../canvas/wall'
+import { image } from '../service/image'
+import modelAbstract from './model'
 
-export default class WallModel extends modelAbstract implements IModel{
+export default class WallModel extends modelAbstract implements IModel {
   canvas: ICanvas = wall
   name: string = 'wall'
   image(): HTMLImageElement {
@@ -11,5 +11,4 @@ export default class WallModel extends modelAbstract implements IModel{
   render(): void {
     super.draw()
   }
-
 }

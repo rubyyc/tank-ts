@@ -2,6 +2,7 @@ import bullet from '../canvas/bullet'
 import config from '../config'
 import { directionEnum } from '../enum/directionEnum'
 import { image } from '../service/image'
+import util from '../util'
 import modelAbstract from './model'
 
 export default class BulletModel extends modelAbstract implements IModel {
@@ -32,10 +33,14 @@ export default class BulletModel extends modelAbstract implements IModel {
         break
     }
     // 碰撞检测
-    this.x = x
-    this.y = y
-
-    this.draw()
+    if (util.isBulletTouchCanvas(x, y, 4, 4)) {
+      // 移除模型或卸载模型
+      this.destroyModel()
+    } else {
+      this.x = x
+      this.y = y
+      this.draw()
+    }
   }
 
   protected draw()
