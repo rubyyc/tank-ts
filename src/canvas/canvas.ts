@@ -5,9 +5,10 @@ export default abstract class CanvasAbstract {
   public models:IModel[] = []
   abstract render(): void
   abstract num(): number
-  abstract model(): modelConstructor
+  abstract model(): modelConstructor | bulletModelConstructor
 
   constructor(
+    protected name: string,
     protected app = document.querySelector('#app') as HTMLDivElement,
     protected el = document.createElement('canvas'),
     public ctx = el.getContext('2d')!
@@ -19,6 +20,7 @@ export default abstract class CanvasAbstract {
   protected createCanvas() {
     this.el.width = config.canvas.width
     this.el.height = config.canvas.height
+    this.el.setAttribute('name',this.name)
 
     // this.canvas.fillStyle = '#16a085'
     // this.canvas.fillRect(0,0,config.canvas.width,config.canvas.height)
@@ -39,7 +41,7 @@ export default abstract class CanvasAbstract {
     */
 
   // 重构后
-    const model = this.model()
+    const model = this.model() as modelConstructor
     console.log(this.num());
     position.getCollection(this.num()).forEach((p) => {
       const instance = new model(p.x, p.y)
@@ -50,6 +52,7 @@ export default abstract class CanvasAbstract {
   // 将models渲染到画布上
   protected renderModels()
   {
+    this.ctx.clearRect(0,0,config.canvas.width,config.canvas.height)
     this.models.forEach(model => {
       model.render()
     })

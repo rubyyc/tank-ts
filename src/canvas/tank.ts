@@ -37,4 +37,4 @@ class Tank extends CanvasAbstract implements ICanvas{
 
 }
 
-export default new Tank()
+export default new Tank('tank')

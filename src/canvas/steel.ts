@@ -17,4 +17,4 @@ class Steel extends CanvasAbstract implements ICanvas{
 
 }
 
-export default new Steel()
+export default new Steel('steel')

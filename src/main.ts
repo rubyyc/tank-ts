@@ -7,6 +7,7 @@ import water from './canvas/water'
 import straw from './canvas/straw'
 import steel from './canvas/steel'
 import tank from './canvas/tank'
+import bullet from './canvas/bullet'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
@@ -27,6 +28,7 @@ async function bootstrap()
   water.render()
   steel.render()
   tank.render()
+  bullet.render()
 
 }
 
