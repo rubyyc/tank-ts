@@ -1,3 +1,4 @@
+import boss from "./canvas/boss"
 import steel from "./canvas/steel"
 import wall from "./canvas/wall"
 import water from "./canvas/water"
@@ -18,7 +19,7 @@ export default {
   },
 
   // 检测子弹打在哪个模型上并返回
-  isBulletTouchModel(x: number, y: number, width = config.model.width, height = config.model.height, models =[...wall.models, ...steel.models]): IModel | undefined {
+  isBulletTouchModel(x: number, y: number, width = config.model.width, height = config.model.height, models =[...wall.models, ...steel.models,...boss.models]): IModel | undefined {
     // 碰到墙,水
     return models.find(model => {
       const state =
@@ -31,7 +32,7 @@ export default {
     })
   },
   // 检测tank是否触碰模型
-  isTankTouchModel(x: number, y: number,width = config.model.width,height = config.model.height,models = [...water.models, ...wall.models, ...steel.models]): boolean {
+  isTankTouchModel(x: number, y: number,width = config.model.width,height = config.model.height,models = [...water.models, ...wall.models, ...steel.models,...boss.models]): boolean {
     // 碰到边界了
     if (x < 0 ||
       x + width> config.canvas.width ||

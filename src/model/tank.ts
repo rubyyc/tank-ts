@@ -14,7 +14,7 @@ export default class TankModel extends modelAbstract implements IModel {
     //super.draw()
     this.move()
 
-    if (_.random(30) < 2) {
+    if (_.random(100) < 2) {
       this.direction = directionEnum.bottom
     }
   }
