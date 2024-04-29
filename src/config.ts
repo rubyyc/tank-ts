@@ -2,6 +2,7 @@ import straw from './static/images/straw/straw.png'
 import wall from './static/images/wall/wall.gif'
 import steel from './static/images/wall/steels.gif'
 import water from './static/images/water/water.gif'
+import boss from './static/images/boss/boss.png'
 import tankTop from './static/images/tank/top.gif'
 import tankRight from './static/images/tank/right.gif'
 import tankBottom from './static/images/tank/bottom.gif'
@@ -31,6 +32,9 @@ const config = {
   water: {
     number: 50,
   },
+  boss: {
+    number: 1,
+  },
   tank: {
     number: 50,
   },
@@ -43,7 +47,8 @@ const config = {
     tankRight,
     tankBottom,
     tankLeft,
-    bullet
+    bullet,
+    boss
   },
 }
 

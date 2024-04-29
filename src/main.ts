@@ -8,6 +8,7 @@ import straw from './canvas/straw'
 import steel from './canvas/steel'
 import tank from './canvas/tank'
 import bullet from './canvas/bullet'
+import boss from './canvas/boss'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
@@ -29,6 +30,7 @@ async function bootstrap()
   steel.render()
   tank.render()
   bullet.render()
+  boss.render()
 
 }
 
