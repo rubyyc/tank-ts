@@ -6,6 +6,8 @@ import config from '../config'
 import player from '../canvas/player'
 import util from '../util'
 import bullet from '../canvas/bullet'
+import audio from '../service/audio'
+import app from '../app'
 
 export default class PlayerModel extends modelAbstract implements IModel {
   canvas: ICanvas = player
@@ -17,10 +19,26 @@ export default class PlayerModel extends modelAbstract implements IModel {
     if (this.bindEvent == false) {
       this.bindEvent = true
       document.addEventListener('keydown', this.changeDirection.bind(this))
+      document.addEventListener('keydown', _.throttle(this.shot.bind(this),1000))
+    }
+  }
+
+  protected shot(event: KeyboardEvent) {
+    if (app.isStart == false) {
+      return
+    }
+    // console.log(event.code)
+    if(event.code == 'Space') {
+        console.log('发射')
+        bullet.addPlayerBullet()
+        audio.fire()
     }
   }
 
   protected changeDirection(event: KeyboardEvent) {
+    if (app.isStart == false) {
+      return
+    }
     // console.log(event.code)
     switch (event.code) {
       case 'ArrowUp':
@@ -39,39 +57,38 @@ export default class PlayerModel extends modelAbstract implements IModel {
         this.direction = directionEnum.left
         this.move()
         break
-      case 'Space':
-        // 发射子弹
-        bullet.addPlayerBullet()
-        break
     }
   }
 
   protected move(): void {
     //while (true) {
-      let x = this.x
-      let y = this.y
-      const dx = config.dx * config.speed.player
-      switch (this.direction) {
-        case directionEnum.top:
-          y -= dx
-          break
-        case directionEnum.right:
-          x += dx
-          break
-        case directionEnum.bottom:
-          y += dx
-          break
-        case directionEnum.left:
-          x -= dx
-          break
-      }
+    let x = this.x
+    let y = this.y
+    const dx = config.dx * config.speed.player
+    switch (this.direction) {
+      case directionEnum.top:
+        y -= dx
+        break
+      case directionEnum.right:
+        x += dx
+        break
+      case directionEnum.bottom:
+        y += dx
+        break
+      case directionEnum.left:
+        x -= dx
+        break
+    }
 
-      if (util.isTankTouchModel(x, y) == true) {
-      } else {
-        this.x = x
-        this.y = y
-        this.canvas.renderModels()
-      }
+    if (util.isTankTouchModel(x, y) == true) {
+      // 碰到啥也不做
+      this.canvas.renderModels()
+      return
+    } else {
+      this.x = x
+      this.y = y
+      this.canvas.renderModels()
+    }
     //}
 
     //super.draw()
@@ -82,6 +99,4 @@ export default class PlayerModel extends modelAbstract implements IModel {
     //console.log(direction);
     return image.get(direction as keyof typeof config.images)!
   }
-
-
 }

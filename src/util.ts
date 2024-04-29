@@ -36,7 +36,7 @@ export default {
   },
 
   // 检测所有坦克是否触碰模型
-  isTankTouchModel(x: number, y: number,width = config.model.width,height = config.model.height,models = [...water.models, ...wall.models, ...steel.models,...boss.models]): boolean {
+  isTankTouchModel(x: number, y: number,width = config.model.width-4,height = config.model.height-4,models = [...water.models, ...wall.models, ...steel.models,...boss.models]): boolean {
     // 碰到边界了
     if (x < 0 ||
       x + width> config.canvas.width ||

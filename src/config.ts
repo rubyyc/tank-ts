@@ -14,13 +14,13 @@ import playerLeft from './static/images/player/left.gif'
 import bullet from './static/images/bullet/bullet.jpg'
 
 const config = {
-  timeout: 30,
+  timeout: 60,
   speed: {
-    tank: 1,
-    player: 2,
-    bullet: 0.5
+    tank: 2,
+    player: 3,
+    bullet: 1
   },
-  dx: 2,
+  dx: 1,
   canvas: {
     width: 900,
     height: 600,
@@ -45,7 +45,7 @@ const config = {
     number: 1,
   },
   tank: {
-    number: 20,
+    number: 10,
   },
   images: {
     straw,

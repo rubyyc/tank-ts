@@ -16,7 +16,7 @@ class Tank extends CanvasAbstract implements ICanvas{
     this.createModels()
     this.renderModels()
 
-    this.interval = setInterval(()=> this.renderModels(),config.timeout)
+    this.interval = setInterval(()=> this.renderModels(),config.timeout/config.speed.tank)
   }
 
   stop() {

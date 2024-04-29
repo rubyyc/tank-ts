@@ -10,6 +10,7 @@ import tank from './canvas/tank'
 import player from './canvas/player'
 import bullet from './canvas/bullet'
 import boss from './canvas/boss'
+import audio from './service/audio'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
@@ -51,6 +52,7 @@ export default {
     tank.stop()
     bullet.stop()
     this.isStart = false
+    this.text()
     console.log('结束')
   },
 
@@ -61,6 +63,7 @@ export default {
     }
     this.isStart = true
     app.style.backgroundImage = 'none'
+    audio.start()
     // 先加载贴图资源
     await Promise.all(promises)
     //console.log(image.get('straw'));
@@ -76,4 +79,15 @@ export default {
     boss.render()
     player.render()
   },
+  text() {
+    const el = document.createElement('canvas')
+    el.width = config.canvas.width
+    el.height = config.canvas.height
+    const ctx = el.getContext('2d')!
+    ctx.fillStyle = 'red'
+    ctx.font = '80px CasadiaMono'
+    ctx.textAlign = 'center'
+    ctx.fillText(this.state == 1 ? 'You Win':'啥也不是',config.canvas.width/2,config.canvas.height/2)
+    app.appendChild(el)
+  }
 }
