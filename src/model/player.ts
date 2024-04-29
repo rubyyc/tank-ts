@@ -21,7 +21,7 @@ export default class PlayerModel extends modelAbstract implements IModel {
   }
 
   protected changeDirection(event: KeyboardEvent) {
-    console.log(event.code)
+    // console.log(event.code)
     switch (event.code) {
       case 'ArrowUp':
         this.direction = directionEnum.top

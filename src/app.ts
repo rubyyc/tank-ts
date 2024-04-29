@@ -19,16 +19,43 @@ app.style.height = config.canvas.height + 'px'
 
 export default {
   isStart: false,
+  state: 9,
+  interval: null as any,
 
   bootstrap() {
-    app.addEventListener('click',this.start.bind(this))
+    app.addEventListener('click', async () => {
+      if (this.isStart == true || this.state != 9) {
+        console.log('true')
+        return
+      }
+      console.log('重复绑定')
+      await this.start()
+      this.interval = setInterval(() => {
+        if (tank.models.length == 0) {
+          this.state = 1
+        }
+
+        if (player.models.length == 0 || boss.models.length == 0) {
+          this.state = 0
+        }
+
+        if (this.state != 9) {
+          this.stop()
+        }
+      }, 100) as any
+    })
   },
 
   stop() {
-
+    clearInterval(this.interval)
+    tank.stop()
+    bullet.stop()
+    this.isStart = false
+    console.log('结束')
   },
 
   async start() {
+    this.state = 9
     if (this.isStart) {
       return
     }
@@ -48,5 +75,5 @@ export default {
     bullet.render()
     boss.render()
     player.render()
-  }
+  },
 }

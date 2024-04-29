@@ -4,6 +4,7 @@ import position from '../service/position'
 import CanvasAbstract from './canvas'
 
 class Tank extends CanvasAbstract implements ICanvas{
+  interval = null as any
   num(): number {
     return config.tank.number
   }
@@ -15,7 +16,11 @@ class Tank extends CanvasAbstract implements ICanvas{
     this.createModels()
     this.renderModels()
 
-    setInterval(()=> this.renderModels(),config.timeout)
+    this.interval = setInterval(()=> this.renderModels(),config.timeout)
+  }
+
+  stop() {
+    clearInterval(this.interval)
   }
 
   protected createModels(){
