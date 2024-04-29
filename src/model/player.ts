@@ -9,11 +9,14 @@ import util from '../util'
 export default class PlayerModel extends modelAbstract implements IModel {
   canvas: ICanvas = player
   name: string = 'player'
+  bindEvent: boolean = false
 
   render(): void {
     super.draw()
-
-    document.addEventListener('keydown', this.changeDirection.bind(this))
+    if (this.bindEvent == false) {
+      this.bindEvent = true
+      document.addEventListener('keydown', this.changeDirection.bind(this))
+    }
   }
 
   protected changeDirection(event: KeyboardEvent) {
