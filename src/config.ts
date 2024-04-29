@@ -15,7 +15,12 @@ import bullet from './static/images/bullet/bullet.jpg'
 
 const config = {
   timeout: 30,
-  dx: 1,
+  speed: {
+    tank: 1,
+    player: 2,
+    bullet: 0.5
+  },
+  dx: 2,
   canvas: {
     width: 900,
     height: 600,

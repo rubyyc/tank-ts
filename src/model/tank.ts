@@ -23,18 +23,19 @@ export default class TankModel extends modelAbstract implements IModel {
     while (true) {
       let x = this.x
       let y = this.y
+      const dx = config.dx * config.speed.tank
       switch (this.direction) {
         case directionEnum.top:
-          y -= config.dx
+          y -= dx
           break
         case directionEnum.right:
-          x += config.dx
+          x += dx
           break
         case directionEnum.bottom:
-          y += config.dx
+          y += dx
           break
         case directionEnum.left:
-          x -= config.dx
+          x -= dx
           break
       }
 

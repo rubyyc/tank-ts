@@ -50,18 +50,19 @@ export default class PlayerModel extends modelAbstract implements IModel {
     //while (true) {
       let x = this.x
       let y = this.y
+      const dx = config.dx * config.speed.player
       switch (this.direction) {
         case directionEnum.top:
-          y -= config.dx*1
+          y -= dx
           break
         case directionEnum.right:
-          x += config.dx*1
+          x += dx
           break
         case directionEnum.bottom:
-          y += config.dx*1
+          y += dx
           break
         case directionEnum.left:
-          x -= config.dx*1
+          x -= dx
           break
       }
 
