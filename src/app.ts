@@ -18,9 +18,10 @@ app.style.height = config.canvas.height + 'px'
 app.style.height = config.canvas.height + 'px'
 
 export default {
+  isStart: false,
 
   bootstrap() {
-
+    app.addEventListener('click',this.start.bind(this))
   },
 
   stop() {
@@ -28,6 +29,11 @@ export default {
   },
 
   async start() {
+    if (this.isStart) {
+      return
+    }
+    this.isStart = true
+    app.style.backgroundImage = 'none'
     // 先加载贴图资源
     await Promise.all(promises)
     //console.log(image.get('straw'));
