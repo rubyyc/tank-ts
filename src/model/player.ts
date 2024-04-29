@@ -5,6 +5,7 @@ import modelAbstract from './model'
 import config from '../config'
 import player from '../canvas/player'
 import util from '../util'
+import bullet from '../canvas/bullet'
 
 export default class PlayerModel extends modelAbstract implements IModel {
   canvas: ICanvas = player
@@ -37,6 +38,10 @@ export default class PlayerModel extends modelAbstract implements IModel {
       case 'ArrowLeft':
         this.direction = directionEnum.left
         this.move()
+        break
+      case 'Space':
+        // 发射子弹
+        bullet.addPlayerBullet()
         break
     }
   }
@@ -76,4 +81,6 @@ export default class PlayerModel extends modelAbstract implements IModel {
     //console.log(direction);
     return image.get(direction as keyof typeof config.images)!
   }
+
+
 }

@@ -1,5 +1,6 @@
 import BulletModel from '../model/bullet'
 import CanvasAbstract from './canvas'
+import player from './player';
 import tank from './tank';
 
 class Bullet extends CanvasAbstract implements ICanvas{
@@ -31,6 +32,10 @@ class Bullet extends CanvasAbstract implements ICanvas{
       }
     })
     // console.log(this.models);
+  }
+
+  addPlayerBullet() {
+    this.models.push(new BulletModel(player.models[0]))
   }
 
 }
