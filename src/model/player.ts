@@ -47,16 +47,16 @@ export default class PlayerModel extends modelAbstract implements IModel {
       let y = this.y
       switch (this.direction) {
         case directionEnum.top:
-          y -= config.dx*4
+          y -= config.dx*1
           break
         case directionEnum.right:
-          x += config.dx*4
+          x += config.dx*1
           break
         case directionEnum.bottom:
-          y += config.dx*4
+          y += config.dx*1
           break
         case directionEnum.left:
-          x -= config.dx*4
+          x -= config.dx*1
           break
       }
 
