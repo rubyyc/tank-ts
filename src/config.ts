@@ -7,6 +7,10 @@ import tankTop from './static/images/tank/top.gif'
 import tankRight from './static/images/tank/right.gif'
 import tankBottom from './static/images/tank/bottom.gif'
 import tankLeft from './static/images/tank/left.gif'
+import playerTop from './static/images/player/top.gif'
+import playerRight from './static/images/player/right.gif'
+import playerBottom from './static/images/player/bottom.gif'
+import playerLeft from './static/images/player/left.gif'
 import bullet from './static/images/bullet/bullet.jpg'
 
 const config = {
@@ -32,7 +36,7 @@ const config = {
   water: {
     number: 50,
   },
-  boss: {
+  player: {
     number: 1,
   },
   tank: {
@@ -47,6 +51,10 @@ const config = {
     tankRight,
     tankBottom,
     tankLeft,
+    playerTop,
+    playerRight,
+    playerBottom,
+    playerLeft,
     bullet,
     boss
   },

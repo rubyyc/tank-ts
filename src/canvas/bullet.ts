@@ -23,14 +23,14 @@ class Bullet extends CanvasAbstract implements ICanvas{
   }
 
   createBullet() {
-    console.log(1);
+    // console.log(1);
     tank.models.forEach(tank => {
       const isExists = this.models.some(m => m.tank == tank)
       if (!isExists) {
         this.models.push(new BulletModel(tank))
       }
     })
-    console.log(this.models);
+    // console.log(this.models);
   }
 
 }

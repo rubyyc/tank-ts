@@ -13,7 +13,7 @@ export default abstract class modelAbstract {
     public x: number,
     public y: number
   ) {
-    this.randomDirection()
+    //this.randomDirection()
   }
 
   protected randomDirection() {

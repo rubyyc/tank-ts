@@ -7,6 +7,7 @@ import water from './canvas/water'
 import straw from './canvas/straw'
 import steel from './canvas/steel'
 import tank from './canvas/tank'
+import player from './canvas/player'
 import bullet from './canvas/bullet'
 import boss from './canvas/boss'
 
@@ -16,8 +17,7 @@ app.style.width = config.canvas.width + 'px'
 app.style.height = config.canvas.height + 'px'
 app.style.height = config.canvas.height + 'px'
 
-async function bootstrap()
-{
+async function bootstrap() {
   // 先加载贴图资源
   await Promise.all(promises)
   //console.log(image.get('straw'));
@@ -31,7 +31,7 @@ async function bootstrap()
   tank.render()
   bullet.render()
   boss.render()
-
+  player.render()
 }
 
 void bootstrap()
