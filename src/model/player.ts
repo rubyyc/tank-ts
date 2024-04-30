@@ -19,7 +19,7 @@ export default class PlayerModel extends modelAbstract implements IModel {
     if (this.bindEvent == false) {
       this.bindEvent = true
       document.addEventListener('keydown', this.changeDirection.bind(this))
-      document.addEventListener('keydown', _.throttle(this.shot.bind(this),1000))
+      document.addEventListener('keydown', _.throttle(this.shot.bind(this),200))
     }
   }
 
